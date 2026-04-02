@@ -1,0 +1,72 @@
+/* Estilos globales para CHRISMAS Electrónica */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Colores principales basados en el mockup */
+:root {
+  --primary-red: #b91c1c;
+  --primary-dark: #7f1a1a;
+  --secondary-gray: #4b5563;
+  --light-gray: #f3f4f6;
+  --white: #ffffff;
+}
+
+/* Clases utilitarias */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--primary-red);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--primary-red);
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: var(--primary-red);
+}
+
+a:hover {
+  text-decoration: underline;
+}
