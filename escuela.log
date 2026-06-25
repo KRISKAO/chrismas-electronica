@@ -59,3 +59,7 @@
 2026-06-24 22:43:30,629 [INFO] werkzeug — 192.168.1.205 - - [24/Jun/2026 22:43:30] "GET /api/estudiantes/6 HTTP/1.1" 200 -
 2026-06-24 22:43:43,492 [INFO] werkzeug — 192.168.1.205 - - [24/Jun/2026 22:43:43] "GET /api/notas/13998887 HTTP/1.1" 200 -
 2026-06-24 23:27:12,287 [INFO] werkzeug — 192.168.1.205 - - [24/Jun/2026 23:27:12] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 02:28:40,176 [INFO] escuela — Archivo .env cargado correctamente.
+2026-06-25 02:28:41,789 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1045 (28000): Access denied for user 'uxuxdyr0fi46ujzr'@'186.121.196.205' (using password: YES)
+2026-06-25 02:44:53,851 [INFO] escuela — Archivo .env cargado correctamente.
+2026-06-25 02:44:54,992 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1045 (28000): Access denied for user 'uxuxdyr0fi46ujzr'@'186.121.196.205' (using password: YES)

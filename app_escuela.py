@@ -256,3 +256,4 @@ def obtener_datos_grafica():
 if __name__ == "__main__":
     # debug=False en producción; usa Gunicorn/Waitress para despliegue real
     app.run(debug=True, host="0.0.0.0", port=5000)
+
