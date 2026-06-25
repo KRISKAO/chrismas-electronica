@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Consulta - Escuela Primaria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-primary mb-4">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">Sistema Administrativo Escolar</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card shadow-sm">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Lista Oficial de Estudiantes Registrados</h5>
+                <button id="btnSincronizar" class="btn btn-primary btn-sm">Sincronizar con API</button>
+            </div>
+            <div class="card-body">
+                <div id="mensajeError" class="alert alert-danger d-none" role="alert"></div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered border-primary">
+                        <thead class="table-light">
+                            <tr>
+                                <th>C.I. Estudiante</th>
+                                <th>Nombre Completo</th>
+                                <th>Curso Asignado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaEstudiantes">
+                            <tr>
+                                <td colspan="3" class="text-center text-muted">Presiona Sincronizar para cargar los datos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btnSincronizar').addEventListener('click', function() {
+            const tbody = document.getElementById('tablaEstudiantes');
+            const errorDiv = document.getElementById('mensajeError');
+            
+            tbody.innerHTML = '<tr><td colspan="3" class="text-center">Cargando datos...</td></tr>';
+            errorDiv.classList.add('d-none');
+
+            fetch('/api/estudiantes')
+                .then(response => {
+                    if (!response.ok) throw new Error("Error interno del servidor MySQL (500)");
+                    return response.json();
+                })
+                .then(data => {
+                    tbody.innerHTML = ''; 
+                    data.forEach(estudiante => {
+                        const fila = `<tr>
+                            <td>${estudiante.ci}</td>
+                            <td>${estudiante.nombre}</td>
+                            <td>${estudiante.curso}</td>
+                        </tr>`;
+                        tbody.innerHTML += fila;
+                    });
+                })
+                .catch(error => {
+                    tbody.innerHTML = '<tr><td colspan="3" class="text-center text-danger">Error de conexión</td></tr>';
+                    errorDiv.textContent = "No se pudo establecer conexión con la base de datos. Verifique MySQL.";
+                    errorDiv.classList.remove('d-none');
+                });
+        });
+    </script>
+</body>
+</html>
