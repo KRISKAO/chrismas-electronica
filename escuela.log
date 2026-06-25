@@ -175,3 +175,63 @@
 2026-06-25 03:26:19,177 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:19] "GET /api/health HTTP/1.1" 200 -
 2026-06-25 03:26:20,993 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:20] "GET /api/estudiantes HTTP/1.1" 200 -
 2026-06-25 03:26:21,201 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:21] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:36:22,508 [INFO] escuela — Archivo .env cargado correctamente.
+2026-06-25 03:36:25,622 [INFO] escuela — Pool MySQL creado con 2 conexiones. Host: buwyia053asdepnw2mwk-mysql.services.clever-cloud.com:3306 — BD: buwyia053asdepnw2mwk
+2026-06-25 03:36:25,675 [INFO] werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.205:5000
+2026-06-25 03:36:25,675 [INFO] werkzeug — [33mPress CTRL+C to quit[0m
+2026-06-25 03:36:52,057 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:36:52] "GET / HTTP/1.1" 200 -
+2026-06-25 03:36:52,687 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:36:52,688 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:36:52,688 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:36:52,688 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:36:55,400 [INFO] escuela — Pool MySQL creado con 2 conexiones. Host: buwyia053asdepnw2mwk-mysql.services.clever-cloud.com:3306 — BD: buwyia053asdepnw2mwk
+2026-06-25 03:36:57,518 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:36:57,521 [ERROR] escuela — Error en query → 
+            SELECT e.CI_Estudiante AS ci, e.Nombre_Completo AS nombre,
+         | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:36:57,522 [ERROR] escuela — Error en /api/estudiantes: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:36:57,524 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:36:57] "[35m[1mGET /api/estudiantes HTTP/1.1[0m" 500 -
+2026-06-25 03:36:58,325 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:36:58,327 [ERROR] escuela — Error en query → 
+            SELECT CONCAT(c.Nivel, ' ', c.Letra) AS curso,
+                   C | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:36:58,326 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:36:58] "GET /api/cursos HTTP/1.1" 200 -
+2026-06-25 03:36:58,327 [ERROR] escuela — Error en /api/dashboard/grafica: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:36:58,329 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:36:58] "[35m[1mGET /api/dashboard/grafica HTTP/1.1[0m" 500 -
+2026-06-25 03:36:59,358 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:36:59,359 [ERROR] escuela — Error en query → 
+            SELECT p.Nombre_Completo AS profesor, m.Nombre_Materia AS materia,
+ | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:36:59,361 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:36:59] "[35m[1mGET /api/plantel-docente HTTP/1.1[0m" 500 -
+2026-06-25 03:36:59,973 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:36:59] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:37:03,045 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:37:03] "GET /api/dashboard/kpis HTTP/1.1" 200 -
+2026-06-25 03:37:11,847 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:11] "GET / HTTP/1.1" 200 -
+2026-06-25 03:37:12,787 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:37:12,788 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:37:12,788 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:37:12,787 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:37:17,520 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:37:17,521 [ERROR] escuela — Error en query → 
+            SELECT e.CI_Estudiante AS ci, e.Nombre_Completo AS nombre,
+         | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:37:17,521 [ERROR] escuela — Error en /api/estudiantes: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:37:17,522 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:17] "[35m[1mGET /api/estudiantes HTTP/1.1[0m" 500 -
+2026-06-25 03:37:18,507 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:37:18,508 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:18] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:37:18,509 [ERROR] escuela — Error en query → SELECT ID_Curso AS id, CONCAT(Nivel, ' ', Letra) AS nombre_curso FROM Curso ORDE | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:37:18,511 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:18] "[35m[1mGET /api/cursos HTTP/1.1[0m" 500 -
+2026-06-25 03:37:19,736 [INFO] escuela — Pool MySQL creado con 2 conexiones. Host: buwyia053asdepnw2mwk-mysql.services.clever-cloud.com:3306 — BD: buwyia053asdepnw2mwk
+2026-06-25 03:37:20,575 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:37:20,575 [ERROR] escuela — Error en query → 
+            SELECT p.Nombre_Completo AS profesor, m.Nombre_Materia AS materia,
+ | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:37:20,576 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:20] "[35m[1mGET /api/plantel-docente HTTP/1.1[0m" 500 -
+2026-06-25 03:37:22,501 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:22] "GET /api/dashboard/grafica HTTP/1.1" 200 -
+2026-06-25 03:37:23,727 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:23] "GET /api/dashboard/grafica HTTP/1.1" 200 -
+2026-06-25 03:37:24,342 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:24] "GET /api/dashboard/kpis HTTP/1.1" 200 -
+2026-06-25 03:37:28,992 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:28] "GET /api/estudiantes HTTP/1.1" 200 -
+2026-06-25 03:37:42,368 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:42] "GET /api/plantel-docente HTTP/1.1" 200 -
+2026-06-25 03:37:47,997 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:47] "GET /api/health HTTP/1.1" 200 -
