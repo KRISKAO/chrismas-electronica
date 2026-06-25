@@ -63,3 +63,13 @@
 2026-06-25 02:28:41,789 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1045 (28000): Access denied for user 'uxuxdyr0fi46ujzr'@'186.121.196.205' (using password: YES)
 2026-06-25 02:44:53,851 [INFO] escuela — Archivo .env cargado correctamente.
 2026-06-25 02:44:54,992 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1045 (28000): Access denied for user 'uxuxdyr0fi46ujzr'@'186.121.196.205' (using password: YES)
+2026-06-25 03:00:47,179 [INFO] escuela — Archivo .env cargado correctamente.
+2026-06-25 03:00:53,276 [INFO] escuela — Pool MySQL creado con 5 conexiones. Host: buwyia053asdepnw2mwk-mysql.services.clever-cloud.com:3306 — BD: buwyia053asdepnw2mwk
+2026-06-25 03:00:53,345 [INFO] werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.205:5000
+2026-06-25 03:00:53,346 [INFO] werkzeug — [33mPress CTRL+C to quit[0m
+2026-06-25 03:00:53,348 [INFO] werkzeug —  * Restarting with stat
+2026-06-25 03:00:53,670 [INFO] escuela — Archivo .env cargado correctamente.
+2026-06-25 03:00:54,503 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
