@@ -93,3 +93,85 @@
 2026-06-25 03:07:18,211 [INFO] werkzeug —  * Restarting with stat
 2026-06-25 03:07:18,542 [INFO] escuela — Archivo .env cargado correctamente.
 2026-06-25 03:07:19,374 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:18:48,761 [INFO] escuela — Archivo .env cargado correctamente.
+2026-06-25 03:18:52,072 [INFO] escuela — Pool MySQL creado con 2 conexiones. Host: buwyia053asdepnw2mwk-mysql.services.clever-cloud.com:3306 — BD: buwyia053asdepnw2mwk
+2026-06-25 03:18:52,251 [INFO] werkzeug — [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.205:5000
+2026-06-25 03:18:52,251 [INFO] werkzeug — [33mPress CTRL+C to quit[0m
+2026-06-25 03:19:03,775 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:03] "GET / HTTP/1.1" 200 -
+2026-06-25 03:19:04,362 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:19:04,363 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:19:04,362 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:19:04,362 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:19:08,848 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:19:08,850 [ERROR] escuela — Error en query → 
+            SELECT e.CI_Estudiante AS ci, e.Nombre_Completo AS nombre,
+         | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:19:08,851 [ERROR] escuela — Error en /api/estudiantes: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:19:08,853 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:08] "[35m[1mGET /api/estudiantes HTTP/1.1[0m" 500 -
+2026-06-25 03:19:09,690 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:19:09,692 [ERROR] escuela — Error en query → 
+            SELECT CONCAT(c.Nivel, ' ', c.Letra) AS curso,
+                   C | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:19:09,691 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:09] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:19:09,694 [ERROR] escuela — Error en /api/dashboard/grafica: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:19:09,696 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:09] "[35m[1mGET /api/dashboard/grafica HTTP/1.1[0m" 500 -
+2026-06-25 03:19:11,017 [INFO] escuela — Pool MySQL creado con 2 conexiones. Host: buwyia053asdepnw2mwk-mysql.services.clever-cloud.com:3306 — BD: buwyia053asdepnw2mwk
+2026-06-25 03:19:11,976 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:19:11,977 [ERROR] escuela — Error en query → 
+            SELECT p.Nombre_Completo AS profesor, m.Nombre_Materia AS materia,
+ | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:19:11,978 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:11] "[35m[1mGET /api/plantel-docente HTTP/1.1[0m" 500 -
+2026-06-25 03:19:13,883 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:13] "GET /api/cursos HTTP/1.1" 200 -
+2026-06-25 03:19:15,840 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:15] "GET /api/dashboard/kpis HTTP/1.1" 200 -
+2026-06-25 03:19:20,027 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:20] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:19:39,585 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:39] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:19:43,579 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:43] "GET /api/dashboard/grafica HTTP/1.1" 200 -
+2026-06-25 03:19:54,334 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:19:54] "GET /api/estudiantes HTTP/1.1" 200 -
+2026-06-25 03:20:00,475 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:20:00] "GET /api/estudiantes HTTP/1.1" 200 -
+2026-06-25 03:20:07,030 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:20:07] "GET /api/plantel-docente HTTP/1.1" 200 -
+2026-06-25 03:20:36,418 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:20:36] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:21:08,061 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:21:08] "GET /api/notas/1234567 HTTP/1.1" 200 -
+2026-06-25 03:21:24,219 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:21:24] "GET /api/notas/13334445 HTTP/1.1" 200 -
+2026-06-25 03:21:50,840 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:21:50] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:21:52,912 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:21:52] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:21:54,857 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:21:54] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:21:57,016 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:21:57] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:21:59,363 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:21:59] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:25:40,031 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:25:40] "GET / HTTP/1.1" 200 -
+2026-06-25 03:25:40,764 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:25:40,765 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:25:40,765 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:25:40,765 [WARNING] escuela — Pool agotado — recreando pool.
+2026-06-25 03:25:43,212 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:25:43] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:25:44,594 [INFO] escuela — Pool MySQL creado con 2 conexiones. Host: buwyia053asdepnw2mwk-mysql.services.clever-cloud.com:3306 — BD: buwyia053asdepnw2mwk
+2026-06-25 03:25:46,819 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:25:46,822 [ERROR] escuela — Error en query → 
+            SELECT CONCAT(c.Nivel, ' ', c.Letra) AS curso,
+                   C | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:25:46,823 [ERROR] escuela — Error en /api/dashboard/grafica: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:25:46,826 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:25:46] "[35m[1mGET /api/dashboard/grafica HTTP/1.1[0m" 500 -
+2026-06-25 03:25:47,818 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:25:47,818 [ERROR] escuela — Error en query → 
+            SELECT p.Nombre_Completo AS profesor, m.Nombre_Materia AS materia,
+ | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:25:47,819 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:25:47] "[35m[1mGET /api/plantel-docente HTTP/1.1[0m" 500 -
+2026-06-25 03:25:49,252 [CRITICAL] escuela — No se pudo crear el pool MySQL: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:25:49,253 [ERROR] escuela — Error en query → 
+            SELECT e.CI_Estudiante AS ci, e.Nombre_Completo AS nombre,
+         | params=None | error=1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:25:49,254 [ERROR] escuela — Error en /api/estudiantes: 1226 (42000): User 'uxuxdyr0fi46ujzr' has exceeded the 'max_user_connections' resource (current value: 5)
+2026-06-25 03:25:49,256 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:25:49] "[35m[1mGET /api/estudiantes HTTP/1.1[0m" 500 -
+2026-06-25 03:25:49,866 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:25:49] "GET /api/cursos HTTP/1.1" 200 -
+2026-06-25 03:25:51,812 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:25:51] "GET /api/dashboard/kpis HTTP/1.1" 200 -
+2026-06-25 03:25:55,602 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:25:55] "GET /api/dashboard/grafica HTTP/1.1" 200 -
+2026-06-25 03:26:06,053 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:06] "GET /api/estudiantes HTTP/1.1" 200 -
+2026-06-25 03:26:07,989 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:07] "GET /api/estudiantes HTTP/1.1" 200 -
+2026-06-25 03:26:10,856 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:10] "GET /api/estudiantes HTTP/1.1" 200 -
+2026-06-25 03:26:13,007 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:13] "GET /api/estudiantes HTTP/1.1" 200 -
+2026-06-25 03:26:17,104 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:17] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:26:19,177 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:19] "GET /api/health HTTP/1.1" 200 -
+2026-06-25 03:26:20,993 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:20] "GET /api/estudiantes HTTP/1.1" 200 -
+2026-06-25 03:26:21,201 [INFO] werkzeug — 192.168.1.205 - - [25/Jun/2026 03:26:21] "GET /api/health HTTP/1.1" 200 -

@@ -41,7 +41,7 @@ DB_CONFIG = {
     "port":     int(os.getenv("DB_PORT", "3306")),
     "user":     os.getenv("DB_USER",     "root"),
     "password": os.getenv("DB_PASSWORD", "Cruz1825258."),
-    "database": os.getenv("DB_NAME",     "Escuela_Primaria"),
+    "database": os.getenv("DB_NAME",     "buwyia053asdepnw2mwk"),
     "charset":  "utf8mb4",
     "use_unicode": True,
     "connection_timeout": 10,
@@ -200,9 +200,12 @@ def obtener_plantel():
             """
             SELECT p.Nombre_Completo AS profesor, m.Nombre_Materia AS materia,
                    CONCAT(c.Nivel, ' ', c.Letra) AS curso, h.Aula AS aula,
-                   CONCAT(h.Dia_Semana, ' (',
-                          DATE_FORMAT(h.Hora_Inicio, '%H:%i'), ' - ',
-                          DATE_FORMAT(h.Hora_Fin, '%H:%i'), ')') AS horario
+                   CASE
+                       WHEN h.Dia_Semana IS NULL THEN 'Pendiente'
+                       ELSE CONCAT(h.Dia_Semana, ' (',
+                            TIME_FORMAT(h.Hora_Inicio, '%H:%i'), ' - ',
+                            TIME_FORMAT(h.Hora_Fin,    '%H:%i'), ')')
+                   END AS horario
             FROM Asignacion a
             INNER JOIN Profesor p  ON a.CI_Profesor = p.CI_Profesor
             INNER JOIN Materia m   ON a.ID_Materia  = m.ID_Materia
