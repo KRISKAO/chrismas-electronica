@@ -55,11 +55,11 @@ def crear_pool():
     try:
         pool = pooling.MySQLConnectionPool(
             pool_name="escuela_pool",
-            pool_size=5,
+            pool_size=2,
             pool_reset_session=True,   # limpia cursores/transacciones al devolver al pool
             **DB_CONFIG
         )
-        log.info("Pool MySQL creado con 5 conexiones. Host: %s:%s — BD: %s",
+        log.info("Pool MySQL creado con 2 conexiones. Host: %s:%s — BD: %s",
                  DB_CONFIG["host"], DB_CONFIG["port"], DB_CONFIG["database"])
         return pool
     except errors.Error as e:
@@ -255,5 +255,5 @@ def obtener_datos_grafica():
 # ============================================================
 if __name__ == "__main__":
     # debug=False en producción; usa Gunicorn/Waitress para despliegue real
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5000, use_reloader=False)
 
