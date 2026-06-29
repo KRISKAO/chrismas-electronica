@@ -235,3 +235,5 @@
 2026-06-25 03:37:28,992 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:28] "GET /api/estudiantes HTTP/1.1" 200 -
 2026-06-25 03:37:42,368 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:42] "GET /api/plantel-docente HTTP/1.1" 200 -
 2026-06-25 03:37:47,997 [INFO] werkzeug — 127.0.0.1 - - [25/Jun/2026 03:37:47] "GET /api/health HTTP/1.1" 200 -
+2026-06-29 17:01:43,055 [INFO] escuela — Archivo .env cargado correctamente.
+2026-06-29 17:01:47,444 [CRITICAL] escuela — No se pudo crear el pool MySQL: 2003 (HY000): Can't connect to MySQL server on 'localhost:3306' (10061)
