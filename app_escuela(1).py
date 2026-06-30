@@ -1,3 +1,4 @@
+
 #app_escuela.py  —  Backend Flask con conexión robusta a MySQL
 
 import os
@@ -13,14 +14,20 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s — %(message)s",
     handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler("escuela.log", encoding="utf-8")
+        logging.StreamHandler(),                         # consola
+        logging.FileHandler("escuela.log", encoding="utf-8")  # archivo
     ]
 )
 log = logging.getLogger("escuela")
 
 # ============================================================
-# LECTURA DE CREDENCIALES DESDE .env
+# LECTURA DE CREDENCIALES DESDE VARIABLES DE ENTORNO
+# Crea un archivo .env en la misma carpeta con:
+#   DB_HOST=localhost
+#   DB_PORT=3306
+#   DB_USER=root
+#   DB_PASSWORD=Cruz1825258.
+#   DB_NAME=Escuela_Primaria
 # ============================================================
 try:
     from dotenv import load_dotenv
@@ -33,25 +40,26 @@ DB_CONFIG = {
     "host":     os.getenv("DB_HOST",     "localhost"),
     "port":     int(os.getenv("DB_PORT", "3306")),
     "user":     os.getenv("DB_USER",     "root"),
-    "password": os.getenv("DB_PASSWORD", ""),
-    "database": os.getenv("DB_NAME",     "buwyia053asdepnw2mwk"),  # CORREGIDO
+    "password": os.getenv("DB_PASSWORD", "Cruz1825258."),
+    "database": os.getenv("DB_NAME",     "Escuela_Primaria"),
     "charset":  "utf8mb4",
     "use_unicode": True,
     "connection_timeout": 10,
 }
 
 # ============================================================
-# POOL DE CONEXIONES
+# POOL DE CONEXIONES 
 # ============================================================
 def crear_pool():
+    """Crea o recrea el pool de conexiones."""
     try:
         pool = pooling.MySQLConnectionPool(
             pool_name="escuela_pool",
-            pool_size=2,               # CORREGIDO: límite Clever Cloud = 5 total
-            pool_reset_session=True,
+            pool_size=5,
+            pool_reset_session=True,   # limpia cursores/transacciones al devolver al pool
             **DB_CONFIG
         )
-        log.info("Pool MySQL creado con 2 conexiones. Host: %s:%s — BD: %s",
+        log.info("Pool MySQL creado con 5 conexiones. Host: %s:%s — BD: %s",
                  DB_CONFIG["host"], DB_CONFIG["port"], DB_CONFIG["database"])
         return pool
     except errors.Error as e:
@@ -62,9 +70,14 @@ pool_conexiones = crear_pool()
 
 
 def obtener_conexion():
+    """
+    Extrae una conexión del pool con reconexión automática.
+    Si el pool está agotado o MySQL reinició, lo recrea.
+    """
     global pool_conexiones
     try:
         conexion = pool_conexiones.get_connection()
+        # Verificar que la conexión siga viva (envía un ping liviano)
         conexion.ping(reconnect=True, attempts=3, delay=1)
         return conexion
     except errors.PoolError:
@@ -82,7 +95,12 @@ def obtener_conexion():
 app = Flask(__name__)
 
 
+# ---- Utilidad: ejecutar query y devolver filas como dicts ----
 def ejecutar_query(query: str, params: tuple = None) -> list:
+    """
+    Abre una conexión del pool, ejecuta la query y la devuelve al pool.
+    params debe ser una tupla para queries parametrizadas (evita SQL injection).
+    """
     conexion = None
     try:
         conexion = obtener_conexion()
@@ -96,17 +114,20 @@ def ejecutar_query(query: str, params: tuple = None) -> list:
         raise
     finally:
         if conexion and conexion.is_connected():
-            conexion.close()
+            conexion.close()   # devuelve al pool, no cierra realmente
 
 
 # ============================================================
-# RUTAS
+# RUTA PRINCIPAL
 # ============================================================
 @app.route("/")
 def inicio():
     return render_template("index.html")
 
 
+# ============================================================
+# ENDPOINT DE SALUD — útil para monitoreo o Docker healthcheck
+# ============================================================
 @app.route("/api/health")
 def health():
     try:
@@ -116,6 +137,9 @@ def health():
         return jsonify({"estado": "ERROR", "detalle": str(e)}), 503
 
 
+# ============================================================
+# ENDPOINTS EXISTENTES
+# ============================================================
 @app.route("/api/cursos")
 def obtener_cursos():
     try:
@@ -140,6 +164,7 @@ def obtener_estudiantes(id_curso=None):
             INNER JOIN Curso c ON e.ID_Curso = c.ID_Curso
         """
         if id_curso:
+            # Parámetro posicional — nunca interpolado directo (SQL injection corregido)
             rows = ejecutar_query(base + " WHERE e.ID_Curso = %s ORDER BY e.Nombre_Completo;", (id_curso,))
         else:
             rows = ejecutar_query(base + " ORDER BY e.Nombre_Completo;")
@@ -175,12 +200,9 @@ def obtener_plantel():
             """
             SELECT p.Nombre_Completo AS profesor, m.Nombre_Materia AS materia,
                    CONCAT(c.Nivel, ' ', c.Letra) AS curso, h.Aula AS aula,
-                   CASE
-                       WHEN h.Dia_Semana IS NULL THEN 'Sin horario asignado'
-                       ELSE CONCAT(h.Dia_Semana, ' (',
-                            TIME_FORMAT(h.Hora_Inicio, '%H:%i'), ' - ',
-                            TIME_FORMAT(h.Hora_Fin,    '%H:%i'), ')')
-                   END AS horario
+                   CONCAT(h.Dia_Semana, ' (',
+                          DATE_FORMAT(h.Hora_Inicio, '%H:%i'), ' - ',
+                          DATE_FORMAT(h.Hora_Fin, '%H:%i'), ')') AS horario
             FROM Asignacion a
             INNER JOIN Profesor p  ON a.CI_Profesor = p.CI_Profesor
             INNER JOIN Materia m   ON a.ID_Materia  = m.ID_Materia
@@ -195,6 +217,9 @@ def obtener_plantel():
         return jsonify({"error": str(e)}), 500
 
 
+# ============================================================
+# ENDPOINTS DE DASHBOARD
+# ============================================================
 @app.route("/api/dashboard/kpis")
 def obtener_kpis():
     try:
@@ -229,4 +254,6 @@ def obtener_datos_grafica():
 # INICIO DEL SERVIDOR
 # ============================================================
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000, use_reloader=False)
+    # debug=False en producción; usa Gunicorn/Waitress para despliegue real
+    app.run(debug=True, host="0.0.0.0", port=5000)
+
